@@ -1,1 +1,3 @@
-# wayne.github.io
+# beamer
+
+For Weekly Seminar of JNU
