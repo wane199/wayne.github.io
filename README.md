@@ -1,3 +1,3 @@
-# beamer
+# PET_Beamer
 
-For Weekly Seminar of JNU
+For Weekly Seminar of JNU.
