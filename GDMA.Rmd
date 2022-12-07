@@ -24,7 +24,7 @@ header-includes:
 - \logo{\includegraphics[width=0.6in,height=0.2in]{images/JNU1.jpg}}
 - \usepackage[fontset = windows]{} # ctex显示中文
 - \usepackage{wrapfig}
-- \usepackage{tikz}
+- \usepackage{tikz} # 背景图片
 - \usepackage{wallpaper} # %使用wallpaper宏包
 - \usepackage{xcolor}
 - \usepackage[default]{sourcesanspro}
