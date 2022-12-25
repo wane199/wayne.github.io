@@ -61,6 +61,16 @@ https://huhuaping.com/2021/02/01/css-base-xaringan/
 https://mpetroff.net/files/beamer-theme-matrix/
 https://wallpaperaccess.com/artificial-intelligence-brain
 ---
+# 吴环华工作汇报1226
+
+--
+论文进度
+```{r echo=FALSE,out.width="125%",fig.cap=""}
+knitr::include_graphics("./images/Gantt.png")
+```
+
+---
+---
 # 吴环华工作汇报1205
 
 --
@@ -79,9 +89,6 @@ Task 2.0 & task 2.2 初稿;
 knitr::include_graphics("./images/scientific_poster_HHW&KL.png")
 ```
 ]
-
-
----
 ---
 # 吴环华工作汇报1107-1024
 ## First
