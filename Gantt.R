@@ -1,4 +1,4 @@
-# [create beautiful GANTT Chart in R with progress tracking.]()
+# [create beautiful GANTT Chart in R with progress tracking.](https://www.youtube.com/watch?v=evHOtG0wDIs)
 # https://rpubs.com/techanswers88/gantt-chart-in-r
 # Packages used
 # GGPLOT GANTT CHART
