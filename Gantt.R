@@ -11,31 +11,28 @@ library(lubridate)
 # df <- read.csv("e:\\tmp\\ProjectSchedule.csv")
 df <- data.frame(
   Stage = c(
-    "Review literature", "Hypothesis formulation",
-    "Get Data", "Data Cleansing",
-    "Data Validation", "Analysis",
-    "Write Report"
+    "Review Literature", "Task 1: Classification",
+    "Task 2: Survival Analysis",
+    "Write Paper"
   ),
   Start = c(
-    "2023-01-01", "2023-02-01",
-    "2023-01-15", "2023-02-15",
-    "2023-02-17", "2023-02-17",
-    "2023-03-01"
+    "2022-12-01", "2022-10-01",
+    "2022-12-17",
+    "2022-12-21"
   ),
   End = c(
-    "2023-02-01", "2023-02-15",
-    "2023-01-27", "2023-02-20",
-    "2023-03-01", "2023-03-17",
-    "2023-03-30"
+    "2023-01-10", "2023-01-15",
+    "2023-01-27", 
+    "2023-01-30"
   ),
-  Complete = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)
+  Complete = c(FALSE, FALSE, FALSE, FALSE)
 )
 df$Start <- ymd(df$Start)
 df$End <- ymd(df$End)
 df.melt <- df %>%
   tidyr::pivot_longer(col = c(Start, End))
 
-today <- as.Date("2022-12-25")
+today <- as.Date("2022-12-26")
 # For live tracking you can use the current date using Sys.Date as shown below
 # today <- Sys.Date()
 
@@ -67,7 +64,7 @@ pl <- pl + geom_line(alpha = 0.5, size = 7)
 pl <- pl + geom_label(aes(label = format(value, "%d %b")), vjust = -0.5, angle = 45, size = 3, color = "black")
 pl <- pl + theme_bw()
 pl <- pl + geom_vline(xintercept = today, color = "grey", size = 2, alpha = 0.5)
-pl <- pl + labs(title = "Gantt Chart")
+pl <- pl + labs(title = "论文进度")
 pl <- pl + labs(subtitle = "Ceated by Huanhua_Wu")
 pl <- pl + labs(caption = "")
 pl <- pl + labs(x = "Date")
@@ -89,8 +86,8 @@ pl <- pl + geom_line(alpha = 0.2, size = 10)
 pl <- pl + geom_text(aes(label = format(value, "%d %b")), vjust = -0.5, angle = 45, size = 3, color = "black")
 pl <- pl + theme_classic()
 pl <- pl + geom_vline(xintercept = today, color = "red", size = 2, alpha = 0.5)
-pl <- pl + labs(title = "Gantt Chart")
-pl <- pl + labs(subtitle = "cCeated by Huanhua_Wu")
+pl <- pl + labs(title = "论文进度")
+pl <- pl + labs(subtitle = "Created by Huanhua_Wu")
 pl <- pl + labs(caption = "")
 pl <- pl + labs(x = "Date")
 pl <- pl + labs(y = "Items")
@@ -112,12 +109,12 @@ pl <- pl + geom_line(alpha = 0.2, size = 10)
 pl <- pl + geom_text(aes(label = format(value, "%d %b")), vjust = 0, angle = 0, size = 3, color = "black")
 pl <- pl + theme_gray()
 pl <- pl + geom_vline(xintercept = today, color = "red", size = 2, alpha = 0.5)
-pl <- pl + labs(title = "Gantt Chart")
+pl <- pl + labs(title = "论文进度")
 pl <- pl + labs(subtitle = "Ceated by Huanhua_Wu")
 pl <- pl + labs(caption = "")
 pl <- pl + labs(x = "Date")
 pl <- pl + labs(y = "Items")
-pl <- pl + scale_color_manual(values = c("red", "blue"))
+pl <- pl + scale_color_manual(values = c("blue")) # "red",
 pl <- pl + theme(legend.position = "none")
 pl <- pl + scale_x_date(
   name = "Dates",
