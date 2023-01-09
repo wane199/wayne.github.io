@@ -11,19 +11,19 @@ library(lubridate)
 # df <- read.csv("e:\\tmp\\ProjectSchedule.csv")
 df <- data.frame(
   Stage = c(
-    "Review Literature", "Task 1: Classification",
-    "Task 2: Survival Analysis",
-    "Write Paper"
+    "Chapter1/Review Literature", "Chapter2/Task 1: Classification",
+    "Chapter3/Task 2: Survival Analysis",
+    "Write Paper: Cox-nomogram"
   ),
   Start = c(
-    "2022-12-01", "2022-10-01",
+    "2022-12-01", "2022-12-01",
     "2022-12-17",
     "2022-12-21"
   ),
   End = c(
-    "2023-01-10", "2023-01-15",
-    "2023-01-27", 
-    "2023-01-30"
+    "2023-01-20", "2023-01-25",
+    "2023-01-30", 
+    "2023-01-15"
   ),
   Complete = c(FALSE, FALSE, FALSE, FALSE)
 )
@@ -32,7 +32,7 @@ df$End <- ymd(df$End)
 df.melt <- df %>%
   tidyr::pivot_longer(col = c(Start, End))
 
-today <- as.Date("2022-12-26")
+today <- as.Date("2023-01-09")
 # For live tracking you can use the current date using Sys.Date as shown below
 # today <- Sys.Date()
 
@@ -63,13 +63,13 @@ pl <- ggplot(df.melt, aes(x = value, y = Stage, colour = Complete))
 pl <- pl + geom_line(alpha = 0.5, size = 7)
 pl <- pl + geom_label(aes(label = format(value, "%d %b")), vjust = -0.5, angle = 45, size = 3, color = "black")
 pl <- pl + theme_bw()
-pl <- pl + geom_vline(xintercept = today, color = "grey", size = 2, alpha = 0.5)
+pl <- pl + geom_vline(xintercept = today, color = "black", size = 2, alpha = 0.5)
 pl <- pl + labs(title = "论文进度")
 pl <- pl + labs(subtitle = "Ceated by Huanhua_Wu")
 pl <- pl + labs(caption = "")
 pl <- pl + labs(x = "Date")
 pl <- pl + labs(y = "Items")
-pl <- pl + scale_color_manual(values = c("red", "blue"))
+pl <- pl + scale_color_manual(values = c("orange", "blue"))
 pl <- pl + theme(legend.position = "none")
 pl <- pl + scale_x_date(
   name = "Dates",
@@ -91,7 +91,7 @@ pl <- pl + labs(subtitle = "Created by Huanhua_Wu")
 pl <- pl + labs(caption = "")
 pl <- pl + labs(x = "Date")
 pl <- pl + labs(y = "Items")
-pl <- pl + scale_color_manual(values = c("red", "blue"))
+pl <- pl + scale_color_manual(values = c("blue"))
 pl <- pl + theme(legend.position = "none")
 pl <- pl + theme(panel.background = element_rect(color = "black"))
 pl <- pl + scale_x_date(
@@ -102,6 +102,8 @@ pl <- pl + scale_x_date(
   sec.axis = dup_axis(name = "Week number", labels = scales::date_format("%W"))
 )
 pl
+library(export)
+graph2pdf(file="gantt.pdf",width=15,font="GB1")
 
 # Fourth Chart
 pl <- ggplot(df.melt, aes(x = value, y = Stage, colour = Complete))
